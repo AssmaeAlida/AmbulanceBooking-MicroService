@@ -136,6 +136,7 @@ Une démonstration vidéo est disponible ici :
 
 
    https://github.com/user-attachments/assets/a902d6c0-65bf-49fd-a15d-2c76fdce0903
+   Une démonstration de l'Admin:
    https://github.com/user-attachments/assets/4ea8ce83-68fd-4bee-8b29-32c2ffdc13b4
 
 ---
