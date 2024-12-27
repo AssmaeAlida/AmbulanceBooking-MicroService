@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 @Service
 public class ReservationService {
@@ -51,4 +52,9 @@ public class ReservationService {
     public Optional<Reservation> getReservationById(Long id) {
         return reservationRepository.findById(id);
     }
+    public List<Reservation> getAllReservations() {
+        return reservationRepository.findAll();
+    }
+
+
 }
