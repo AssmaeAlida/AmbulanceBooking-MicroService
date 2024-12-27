@@ -1,0 +1,22 @@
+server:
+  port: 8088  # Le port de l'API Gateway
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: patient-service
+          uri: http://localhost:8083  # URL de ton Patient Service
+          predicates:
+            - Path=/patients/** ,/api/auth/**  # # Toute requête commençant par /patients ira vers le Patient Service
+        - id: ambulance-service
+          uri: http://localhost:8085  # URL de ton Ambulance Service
+          predicates:
+            - Path=/ambulances/** ,/drivers/**  # Toute requête commençant par /ambulances ira vers le Ambulance Service
+        - id: reservation-service
+          uri: http://localhost:8086  # URL de ton Reservation Service
+          predicates:
+            - Path=/reservations/**  # Toute requête commençant par /reservations ira vers le Reservation Service
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
