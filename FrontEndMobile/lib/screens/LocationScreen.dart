@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -67,7 +69,7 @@ class _LocationScreenState extends State<LocationScreen> {
 
       // Mettre à jour la localisation sur le serveur
       try {
-        await _updateLocationOnServer(256, location); // Remplacez `255` par l'ID réel du patient
+        await _updateLocationOnServer(255, location); // Remplacez `255` par l'ID réel du patient
       } catch (e) {
         print("Erreur lors de la mise à jour sur le serveur : $e");
       }
@@ -96,44 +98,146 @@ class _LocationScreenState extends State<LocationScreen> {
     }
   }
 
+
+
   /// Méthode appelée lors de la création de la carte
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Localisation actuelle'),
+
+  /// Méthode pour récupérer les conducteurs proches
+/// Méthode pour récupérer les conducteurs proches
+Future<List<Marker>> _getNearbyDrivers() async {
+  final uri = Uri.parse(
+      'http://10.0.2.2:8088/drivers/nearby?latitude=${_currentPosition!.latitude}&longitude=${_currentPosition!.longitude}&radius=10');
+
+  final response = await http.get(uri);
+
+  if (response.statusCode == 200) {
+    final List<dynamic> drivers = json.decode(response.body);
+    return drivers.map((driver) {
+      return Marker(
+        markerId: MarkerId(driver['id'].toString()),
+        position: LatLng(driver['latitude'], driver['longitude']),
+        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen),
+        infoWindow: InfoWindow(title: driver['name']),
+        onTap: () {
+          _showReservationDialog(context, driver);
+        },
+      );
+    }).toList();
+  } else {
+    throw Exception("Erreur lors de la récupération des conducteurs.");
+  }
+}
+
+void _showReservationDialog(BuildContext context, dynamic driver) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text('Réserver une ambulance'),
+        content: Text('Voulez-vous réserver le conducteur ${driver['id']}?'),
+        actions: <Widget>[
+          TextButton(
+            child: Text('Annuler'),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+          TextButton(
+            child: Text('Réserver'),
+            onPressed: () {
+              _sendReservation(driver['id']);
+              Navigator.of(context).pop();
+              _showConfirmationSnackBar();
+            },
+          ),
+        ],
+      );
+    },
+  );
+}
+
+void _showConfirmationSnackBar() {
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(
+      content: Text('Demande de réservation envoyée!'),
+      backgroundColor: Colors.green,
+      duration: Duration(seconds: 2),
+    ),
+  );
+}
+
+// ...existing code...
+
+void _sendReservation(int driverId) async {
+  try {
+    final uri = Uri.parse('http://10.0.2.2:8088/reservations/create');
+    final response = await http.post(
+      uri,
+      headers: {'Content-Type': 'application/json'},
+      body: json.encode({
+        'patientId': 255,
+        'ambulanceId': driverId, // Changed from driverId to ambulanceId
+        'status': 'PENDING'
+      }),
+    );
+
+    if (response.statusCode == 200) {
+      print("Réservation envoyée avec succès !");
+      _showConfirmationSnackBar();
+    } else {
+      throw Exception("Erreur lors de la réservation : ${response.statusCode}");
+    }
+  } catch (e) {
+    print("Erreur d'envoi de réservation: $e");
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('Erreur lors de l\'envoi de la réservation'),
         backgroundColor: Colors.red,
       ),
-      body: _isLoading
-          ? Center(child: CircularProgressIndicator())
-          : GoogleMap(
-              onMapCreated: _onMapCreated,
-              initialCameraPosition: CameraPosition(
-                target: _currentPosition!, // Position initiale sur la carte
-                zoom: 16.0,
-              ),
-              markers: _currentLocationMarker != null
-                  ? {_currentLocationMarker!}
-                  : {},
-              onTap: (LatLng location) {
-                // Met à jour la localisation sur la carte lors du tap
-                setState(() {
-                  _currentPosition = location;
-                  _currentLocationMarker = Marker(
-                    markerId: MarkerId('tapped_location'),
-                    position: location,
-                    icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
-                    infoWindow: InfoWindow(title: 'Nouvelle position'),
-                  );
-                });
-                // Mettre à jour la localisation sur le serveur après le tap
-                _updateLocationOnServer(255, location); // Remplacez `255` par l'ID du patient
-              },
-            ),
     );
   }
+}
+
+
+
+//////////////
+ @override
+Widget build(BuildContext context) {
+  return Scaffold(
+    appBar: AppBar(
+      title: Text('Localisation actuelle'),
+      backgroundColor: Colors.red,
+    ),
+    body: _isLoading
+        ? Center(child: CircularProgressIndicator())
+        : FutureBuilder<List<Marker>>(
+            future: _getNearbyDrivers(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return Center(child: CircularProgressIndicator());
+              } else if (snapshot.hasError) {
+                return Center(child: Text('Erreur : ${snapshot.error}'));
+              } else {
+                return GoogleMap(
+                  onMapCreated: _onMapCreated,
+                  initialCameraPosition: CameraPosition(
+                    target: _currentPosition!,
+                    zoom: 16.0,
+                  ),
+                  markers: {
+                    if (_currentLocationMarker != null)
+                      _currentLocationMarker!,
+                    ...snapshot.data!,
+                  },
+                );
+              }
+            },
+          ),
+  );
+}
+
 }

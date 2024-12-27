@@ -14,14 +14,10 @@ class ViewScreen extends StatelessWidget {
           children: [
             // Cercle et Nom
             SizedBox(height: 20),
-            CircleAvatar(
-              radius: 50,
-              backgroundColor: Colors.grey.shade300,
-              child: Icon(Icons.person, size: 50, color: Colors.white),
-            ),
-            SizedBox(height: 10),
+          
+            SizedBox(height: 20),
             Text(
-              "Name",
+              "Welcome to your app",
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -36,7 +32,7 @@ class ViewScreen extends StatelessWidget {
                 children: [
                   MenuItem(
                     icon: Icons.home,
-                    title: "Home",
+                    title: "Emergency Call",
                     onTap: () {
                       Navigator.push(
                         context,
@@ -46,7 +42,7 @@ class ViewScreen extends StatelessWidget {
                   ),
                   MenuItem(
                     icon: Icons.person,
-                    title: "Profile",
+                    title: "Your Profile",
                     onTap: () {
                       Navigator.push(
                         context,
@@ -56,7 +52,7 @@ class ViewScreen extends StatelessWidget {
                   ),
                   MenuItem(
                     icon: Icons.notifications,
-                    title: "Location",
+                    title: "Find the nearst ambulance",
                     onTap: () {
                       Navigator.push(
                         context,

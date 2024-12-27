@@ -72,61 +72,65 @@ class _ProfileScreenState extends State<ProfileScreen> {
         backgroundColor: Colors.redAccent,
       ),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(height: 20),
-            _image != null
-                ? CircleAvatar(
-                    radius: 60,
-                    backgroundImage: FileImage(_image!),
-                  )
-                : CircleAvatar(
-                    radius: 60,
-                    backgroundColor: Colors.grey[200],
-                    child: Icon(Icons.person, size: 60, color: Colors.grey),
-                  ),
-            SizedBox(height: 20),
-            Text(
-              _name.isEmpty ? "Nom et Prénom" : _name,
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 10),
-            Text(
-              _dob.isEmpty ? "Date de naissance" : "Date de naissance: $_dob",
-              style: TextStyle(fontSize: 16),
-            ),
-            SizedBox(height: 10),
-            Text(
-              _cin.isEmpty ? "CIN" : "CIN: $_cin",
-              style: TextStyle(fontSize: 16),
-            ),
-            SizedBox(height: 20),
-            ElevatedButton.icon(
-              onPressed: _pickImage,
-              icon: Icon(Icons.camera_alt),
-              label: Text("Prendre une photo"),
-              style: ElevatedButton.styleFrom(backgroundColor: Colors.redAccent),
-            ),
-            SizedBox(height: 20),
-            _image != null
-                ? Column(
-                    children: [
-                      Text("Votre CNIC", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
-                      SizedBox(height: 10),
-                      Image.file(_image!, height: 200, width: 300),
-                    ],
-                  )
-                : SizedBox.shrink(),
-            SizedBox(height: 30),
-            ElevatedButton.icon(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: Icon(Icons.logout),
-              label: Text("LOGOUT"),
-              style: ElevatedButton.styleFrom(backgroundColor: Colors.redAccent),
-            ),
-          ],
+        child: Center(  // Centering the entire content
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,  // Centers vertically
+            crossAxisAlignment: CrossAxisAlignment.center,  // Centers horizontally
+            children: [
+              SizedBox(height: 20),
+              _image != null
+                  ? CircleAvatar(
+                      radius: 60,
+                      backgroundImage: FileImage(_image!),
+                    )
+                  : CircleAvatar(
+                      radius: 60,
+                      backgroundColor: Colors.grey[200],
+                      child: Icon(Icons.person, size: 60, color: Colors.grey),
+                    ),
+              SizedBox(height: 20),
+              Text(
+                _name.isEmpty ? "Assmae ALida" : _name,
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 10),
+              Text(
+                _dob.isEmpty ? "Date de naissance" : "Date de naissance: $_dob",
+                style: TextStyle(fontSize: 16),
+              ),
+              SizedBox(height: 10),
+              Text(
+                _cin.isEmpty ? "CIN" : "CIN: $_cin",
+                style: TextStyle(fontSize: 16),
+              ),
+              SizedBox(height: 20),
+              ElevatedButton.icon(
+                onPressed: _pickImage,
+                icon: Icon(Icons.camera_alt),
+                label: Text("Prendre une photo"),
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.redAccent),
+              ),
+              SizedBox(height: 20),
+              _image != null
+                  ? Column(
+                      children: [
+                        Text("Votre CNIC", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+                        SizedBox(height: 10),
+                        Image.file(_image!, height: 200, width: 300),
+                      ],
+                    )
+                  : SizedBox.shrink(),
+              SizedBox(height: 30),
+              ElevatedButton.icon(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: Icon(Icons.logout),
+                label: Text("LOGOUT"),
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.redAccent),
+              ),
+            ],
+          ),
         ),
       ),
     );

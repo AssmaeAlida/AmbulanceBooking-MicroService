@@ -4,7 +4,6 @@ import 'dart:async';
 import 'package:localisationfutter/screens/SelectScreen.dart';
 import 'package:localisationfutter/screens/User/CreateAccountScreen.dart';
 import 'package:localisationfutter/screens/ViewScreen.dart';
- 
 
 void main() {
   runApp(MyApp());
@@ -17,12 +16,9 @@ class MyApp extends StatelessWidget {
       home: IntroScreen(),
       debugShowCheckedModeBanner: false,
       routes: {
-
-       
         '/SelectScreen':(context) => SelectScreen(),
         '/ViewScreenD': (context) => ViewScreenD(),
         '/ViewScreen': (context) => ViewScreen(),
-
       },
     );
   }
@@ -51,37 +47,26 @@ class _IntroScreenState extends State<IntroScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Stack(
-        children: [
-          Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset(
-                  'assets/hopital.jpg',
-                  height: 200,
-                ),
-                SizedBox(height: 20),
-                Text(
-                  "Welcome To Ambulance Tracker",
-                  style: TextStyle(
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                    color: const Color.fromARGB(255, 185, 200, 226),
-                  ),
-                ),
-                
-              ],
+      body: Center(  // Utilisation du widget Center pour centrer tout le contenu
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,  // Centrer verticalement
+          crossAxisAlignment: CrossAxisAlignment.center,  // Centrer horizontalement
+          children: [
+            Image.asset(
+              'assets/hopital.jpg',
+              height: 200,
             ),
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-             
+            SizedBox(height: 20),
+            Text(
+              "Welcome To Ambulance Tracker",
+              style: TextStyle(
+                fontSize: 32,
+                fontWeight: FontWeight.bold,
+                color: const Color.fromARGB(255, 185, 200, 226),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
