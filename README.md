@@ -139,7 +139,7 @@ Une démonstration vidéo est disponible ici :
 
    Une démonstration de l'Admin:
    
-   https://github.com/user-attachments/assets/4ea8ce83-68fd-4bee-8b29-32c2ffdc13b4
+   https://github.com/user-attachments/assets/570444d6-b3fc-41e2-abfc-c9166b43c09d
 
 ---
 
