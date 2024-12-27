@@ -32,7 +32,7 @@ L'application repose sur une architecture microservices composée des éléments
   - **Application Web** pour les administrateurs (gestion des conducteurs, ambulances, patients et réservations).
 - **Firebase Authentication** : Utilisé pour l'authentification des utilisateurs (patients, conducteurs, administrateurs).
 
-   ![WhatsApp Image 2024-12-27 at 12 34 40_6d788851](https://github.com/user-attachments/assets/bf5023bc-c61b-408b-acea-93fdd3422d91)
+  ![WhatsApp Image 2024-12-27 at 15 26 37_bfbb3d1d](https://github.com/user-attachments/assets/59c5b398-08b3-4329-ad14-5af33e4d4fb2)
 
 ---
 
