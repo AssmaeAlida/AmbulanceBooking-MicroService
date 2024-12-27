@@ -11,6 +11,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/patients")
+@CrossOrigin(origins = "http://localhost:3001")
 public class PatientController {
 
     @Autowired
@@ -44,7 +45,7 @@ public class PatientController {
 
 
     // Endpoint pour lister tous les patients
-    @GetMapping
+    @GetMapping("/")
     public ResponseEntity<List<Patient>> getAllPatients() {
         List<Patient> patients = patientService.getAllPatients();
         return ResponseEntity.ok(patients);

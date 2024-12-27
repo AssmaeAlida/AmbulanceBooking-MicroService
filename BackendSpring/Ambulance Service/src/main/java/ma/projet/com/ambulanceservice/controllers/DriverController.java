@@ -14,6 +14,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/drivers")
+@CrossOrigin(origins = "http://localhost:3001")
 public class DriverController {
 
     @Autowired
