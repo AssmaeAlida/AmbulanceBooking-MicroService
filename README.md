@@ -51,10 +51,10 @@ L'application est basée sur une architecture microservices comprenant :
 
 ## **Frontend**
 ### Technologies utilisées :
-- **Mobile** : Flutter ou React Native.
+- **Mobile** : Flutter .
   - **Patient** : Définir la localisation et effectuer des réservations.
   - **Driver** : Localisation en temps réel et gestion des demandes.
-- **Web (Admin)** : Angular ou React.js.
+- **Web (Admin)** :  React.js.
   - Gestion des conducteurs, ambulances, patients et réservations.
 
 ---
@@ -125,7 +125,7 @@ Nous accueillons vos contributions pour améliorer ce projet. Suivez ces étapes
 ---
 
 ## **Contributeurs**
-- **[Assmae Alida](#)** (GitHub)
+- **[Assmae Alida](#)** (https://github.com/AssmaeAlida)
 - **[Zineb Hijaoui](#)** (GitHub)
 - **[Salema Arraouen](#)** (GitHub)
 - **[Halima Benchouk](#)** (GitHub)
