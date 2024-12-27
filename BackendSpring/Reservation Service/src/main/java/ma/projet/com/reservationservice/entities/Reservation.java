@@ -8,8 +8,11 @@ public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(nullable = false)
 
     private Long patientId; // Référence à l'ID du patient
+    @Column(nullable = false)
+
     private Long ambulanceId; // Référence à l'ID de l'ambulance
 
     private LocalDateTime reservationTime; // Heure de réservation

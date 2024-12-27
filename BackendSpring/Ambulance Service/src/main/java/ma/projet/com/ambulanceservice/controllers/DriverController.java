@@ -14,8 +14,6 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/drivers")
-@CrossOrigin(origins = "http://localhost:3001")
-
 public class DriverController {
 
     @Autowired
@@ -100,5 +98,12 @@ public class DriverController {
         }
     }
 
-
+    @GetMapping("/nearby")
+    public ResponseEntity<List<Driver>> getNearbyDrivers(
+            @RequestParam double latitude,
+            @RequestParam double longitude,
+            @RequestParam(defaultValue = "10.0") double radius) {
+        List<Driver> nearbyDrivers = driverService.getNearbyDrivers(latitude, longitude, radius);
+        return ResponseEntity.ok(nearbyDrivers);
+    }
 }

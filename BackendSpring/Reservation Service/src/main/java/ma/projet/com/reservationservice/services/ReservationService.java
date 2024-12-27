@@ -52,9 +52,26 @@ public class ReservationService {
     public Optional<Reservation> getReservationById(Long id) {
         return reservationRepository.findById(id);
     }
+
     public List<Reservation> getAllReservations() {
         return reservationRepository.findAll();
     }
+    // Mettre à jour le statut d'une réservation
+    public Reservation confirmReservation(Long id) {
+        Reservation reservation = reservationRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Réservation introuvable !"));
+        reservation.setStatus("confirmed");
+        return reservationRepository.save(reservation);
+    }
 
+    public Reservation cancelReservation(Long id) {
+        Reservation reservation = reservationRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Réservation introuvable !"));
+        reservation.setStatus("canceled");
+        return reservationRepository.save(reservation);
+    }
+    public List<Reservation> getPendingReservationsForDriver(Long driverId) {
+        return reservationRepository.findPendingByDriverId(driverId);
+    }
 
 }

@@ -1,5 +1,6 @@
 package ma.projet.com.ambulanceservice.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
@@ -18,7 +19,8 @@ public class Driver {
 
     @ManyToOne
     @JoinColumn(name = "ambulance_id")
-    @JsonIgnore // La clé étrangère dans Driver
+    @JsonIgnore// La clé étrangère dans Driver
+    @JsonBackReference
     private Ambulance ambulance;
 
     private double latitude;

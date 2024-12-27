@@ -107,4 +107,7 @@ public class DriverService {
             return "Driver not found. Please register first.";
         }
     }
+    public List<Driver> getNearbyDrivers(double latitude, double longitude, double radius) {
+        return driverRepository.findNearbyDrivers(latitude, longitude, radius);
+    }
 }

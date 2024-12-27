@@ -4,6 +4,7 @@ import ma.projet.com.ambulanceservice.entities.Ambulance;
 import ma.projet.com.ambulanceservice.services.AmbulanceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,8 +13,6 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/ambulances")
-@CrossOrigin(origins = "http://localhost:3001")
-
 public class AmbulanceController {
 
     @Autowired
@@ -33,11 +32,19 @@ public class AmbulanceController {
     }
 
     // Endpoint pour ajouter une ambulance
-    @PostMapping("/add")
+//    @PostMapping("/add")
+//    public ResponseEntity<Ambulance> addAmbulance(@RequestBody Ambulance ambulance) {
+//        Ambulance newAmbulance = ambulanceService.addAmbulance(ambulance);
+//        return new ResponseEntity<>(newAmbulance, HttpStatus.CREATED);
+//    }
+
+    @PostMapping(value = "/add", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Ambulance> addAmbulance(@RequestBody Ambulance ambulance) {
         Ambulance newAmbulance = ambulanceService.addAmbulance(ambulance);
         return new ResponseEntity<>(newAmbulance, HttpStatus.CREATED);
     }
+
+
 
     // Endpoint pour mettre à jour une ambulance
     @PutMapping("/{id}")

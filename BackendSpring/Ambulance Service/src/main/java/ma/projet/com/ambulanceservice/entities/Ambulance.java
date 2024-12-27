@@ -14,8 +14,8 @@ public class Ambulance {
     private String matricule;
     private String status; // "available", "in mission"
 
-    @OneToMany(mappedBy = "ambulance")
-    @JsonManagedReference // mappedBy indique que la relation est gérée côté Driver
+    @OneToMany(mappedBy = "ambulance", cascade = CascadeType.ALL)
+    @JsonManagedReference  // mappedBy indique que la relation est gérée côté Driver
     private List<Driver> drivers; // Un conducteur peut avoir plusieurs ambulances
 
     // Getters et Setters

@@ -4,8 +4,10 @@ import ma.projet.com.patientservice.entities.Patient;
 import ma.projet.com.patientservice.repositories.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -13,6 +15,9 @@ public class PatientService {
 
     @Autowired
     private PatientRepository patientRepository;
+
+    private RestTemplate restTemplate;
+
 
     // Ajouter un nouveau patient
     public Patient createPatient(Patient patient) {
@@ -51,4 +56,8 @@ public class PatientService {
         }
         patientRepository.deleteById(id);
     }
+
+
+
+
 }

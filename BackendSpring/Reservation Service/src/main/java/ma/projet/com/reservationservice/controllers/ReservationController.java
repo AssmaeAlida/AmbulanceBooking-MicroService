@@ -41,5 +41,21 @@ public class ReservationController {
         List<Reservation> reservations = reservationService.getAllReservations();
         return ResponseEntity.ok(reservations);
     }
-
+    // Endpoint pour confirmer une réservation
+    @PutMapping("/{id}/confirm")
+    public ResponseEntity<Reservation> confirmReservation(@PathVariable Long id) {
+        Reservation reservation = reservationService.confirmReservation(id);
+        return ResponseEntity.ok(reservation);
+    }
+    // Endpoint pour annuler une réservation
+    @PutMapping("/{id}/cancel")
+    public ResponseEntity<Reservation> cancelReservation(@PathVariable Long id) {
+        Reservation reservation = reservationService.cancelReservation(id);
+        return ResponseEntity.ok(reservation);
+    }
+    @GetMapping("/driver/{driverId}/pending")
+    public ResponseEntity<List<Reservation>> getPendingReservations(@PathVariable Long driverId) {
+        List<Reservation> pendingReservations = reservationService.getPendingReservationsForDriver(driverId);
+        return ResponseEntity.ok(pendingReservations);
+    }
 }

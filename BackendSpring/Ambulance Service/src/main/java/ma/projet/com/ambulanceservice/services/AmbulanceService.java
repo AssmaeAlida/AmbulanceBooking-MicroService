@@ -25,6 +25,10 @@ public class AmbulanceService {
     }
 
     // Méthode pour ajouter une ambulance
+    //public Ambulance addAmbulance(Ambulance ambulance) {
+  //      return ambulanceRepository.save(ambulance);
+   // }
+
     public Ambulance addAmbulance(Ambulance ambulance) {
         return ambulanceRepository.save(ambulance);
     }

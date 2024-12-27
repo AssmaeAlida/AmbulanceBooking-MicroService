@@ -7,10 +7,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/patients")
-@CrossOrigin(origins = "http://localhost:3001")
 public class PatientController {
 
     @Autowired
@@ -44,7 +44,7 @@ public class PatientController {
 
 
     // Endpoint pour lister tous les patients
-    @GetMapping("/")
+    @GetMapping
     public ResponseEntity<List<Patient>> getAllPatients() {
         List<Patient> patients = patientService.getAllPatients();
         return ResponseEntity.ok(patients);
@@ -56,5 +56,9 @@ public class PatientController {
         patientService.deletePatient(id);
         return ResponseEntity.noContent().build();
     }
+    // Endpoint pour obtenir les conducteurs à proximité
+
+
+    // Endpoint pour envoyer une demande d'aide
 
 }
