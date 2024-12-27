@@ -1,0 +1,37 @@
+.dashboard {
+    padding: 20px;
+}
+
+.dashboard-header {
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    position: relative;
+    margin: 0 85px;
+    text-align: center;
+}
+
+.icon-number {
+    position: absolute;
+    top: -10px; /* Ajustez la position selon vos besoins */
+    right: -10px; /* Ajustez la position selon vos besoins */
+    background-color: red; /* Couleur d'arrière-plan */
+    color: white; /* Couleur du texte */
+    border-radius: 50%; /* Forme ronde */
+    padding: 2px 5px; /* Espacement */
+    font-size: 22px; /* Taille de police */
+}
+
+.charts {
+    display: flex;
+    justify-content: space-between;
+}
+.chart {
+    flex: 1;
+    margin: 0 10px;
+}
+.map {
+    margin-top: 20px;
+}

@@ -1,0 +1,79 @@
+.crud-container {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+  }
+  
+  .crud-title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .crud-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .crud-button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .crud-button.import {
+    background-color: #007bff;
+  }
+  
+  .crud-button.add {
+    background-color: #28a745;
+  }
+  
+  .crud-button.preview {
+    background-color: #17a2b8;
+  }
+  
+  .crud-button.edit {
+    background-color: #ffc107;
+  }
+  
+  .crud-button.delete {
+    background-color: #dc3545;
+  }
+  
+  .crud-button:hover {
+    opacity: 0.9;
+  }
+  
+  .crud-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .crud-table th,
+  .crud-table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+  
+  .crud-table th {
+    background-color: #f8f9fa;
+    color: #333;
+  }
+  
+  .crud-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .crud-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
