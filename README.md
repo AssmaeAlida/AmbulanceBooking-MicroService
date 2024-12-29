@@ -3,7 +3,7 @@
 # **AmbuBook** - Plateforme de réservation d'ambulances
 
 ## **Description**
-AmbuBook est une plateforme innovante de gestion et de réservation d'ambulances, conçue avec une architecture microservices. Le système comprend plusieurs services backend et interfaces frontend pour permettre une interaction fluide entre les patients, les conducteurs d'ambulances et les administrateurs. **Firebase** est utilisé uniquement pour l'authentification des utilisateurs.
+AmbuBook est une plateforme innovante de gestion et de réservation d'ambulances, conçue avec une architecture microservices. Le système comprend plusieurs services backend et interfaces frontend pour permettre une interaction fluide entre les patients, les conducteurs d'ambulances et les administrateurs. **Firebase** est utilisé pour l'authentification des utilisateurs.
 
 ---
 
