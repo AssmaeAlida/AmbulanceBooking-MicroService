@@ -130,6 +130,20 @@ L'application repose sur une architecture microservices composée des éléments
    - API Gateway : [http://localhost:8080](http://localhost:8088).
 
 ---
+## **Construire l'image Docker**
+   - Utilisez la commande suivante pour construire l'image Docker :
+     ```bash
+     docker build -t mon-app-web .
+     ```
+## **Exécuter le conteneur**
+   - Pour exécuter l'application dans un conteneur Docker, utilisez :
+     ```bash
+     docker run -p 8080:80 mon-app-web
+     ```
+     L'application sera accessible à l'adresse : http://localhost:8080
+## **Vérifier le déploiement**
+   - Ouvrez un navigateur web et accédez à http://localhost:8080 pour vérifier que votre application s'exécute correctement.
+
 
 ## **Vidéo Démo**
 Une démonstration vidéo est disponible ici : 
