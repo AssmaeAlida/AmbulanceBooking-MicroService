@@ -14,6 +14,7 @@ AmbuBook est une plateforme innovante de gestion et de réservation d'ambulances
 - [Backend](#backend)
 - [Firebase Authentication](#firebase-authentication)
 - [Instructions pour Démarrer](#instructions-pour-démarrer)
+- [Construire l'image Docker](#construire-limage-docker)
 - [Vidéo Démonstrative](#vidéo-démo)
 - [Contributions](#contributions)
 - [Contributeurs](#contributeurs)
@@ -22,7 +23,7 @@ AmbuBook est une plateforme innovante de gestion et de réservation d'ambulances
 
 ## **Architecture Logicielle**
 L'application repose sur une architecture microservices composée des éléments suivants :
-- **API Gateway** : Interface principale pour centraliser les communications entre les services.
+- **API Gateway** : Interface principale pour centraliser les communications entre les services. Elle est accessible via le port **8088**.
 - **Services Backend** :
   - **PatientService** : Gestion des données des patients.
   - **AmbulanceService** : Gestion des conducteurs et des ambulances.
@@ -50,6 +51,7 @@ L'application repose sur une architecture microservices composée des éléments
 
 ### **API Gateway**
 - Centralise toutes les communications entre le frontend et les microservices backend.
+- Port configuré : **8088**.
 
 ---
 
@@ -127,33 +129,37 @@ L'application repose sur une architecture microservices composée des éléments
 
 6. **Accéder à l'Application** :
    - Frontend Web : [http://localhost:4200](http://localhost:4200).
-   - API Gateway : [http://localhost:8080](http://localhost:8088).
+   - API Gateway : [http://localhost:8088](http://localhost:8088).
 
 ---
-## **Construire l'image Docker**
-   - Utilisez la commande suivante pour construire l'image Docker :
-     ```bash
-     docker build -t mon-app-web .
-     ```
-## **Exécuter le conteneur**
-   - Pour exécuter l'application dans un conteneur Docker, utilisez :
-     ```bash
-     docker run -p 8080:80 mon-app-web
-     ```
-     L'application sera accessible à l'adresse : http://localhost:8080
-## **Vérifier le déploiement**
-   - Ouvrez un navigateur web et accédez à http://localhost:8080 pour vérifier que votre application s'exécute correctement.
 
+## **Construire l'image Docker**
+### **Créer l'image Docker**
+- Utilisez la commande suivante pour construire l'image Docker :
+  ```bash
+  docker build -t mon-app-web .
+  ```
+
+### **Exécuter le conteneur**
+- Pour exécuter l'application dans un conteneur Docker, utilisez :
+  ```bash
+  docker run -p 8080:80 mon-app-web
+  ```
+  L'application sera accessible à l'adresse : [http://localhost:8080](http://localhost:8080).
+
+### **Vérifier le déploiement**
+- Ouvrez un navigateur web et accédez à [http://localhost:8080](http://localhost:8080) pour vérifier que votre application s'exécute correctement.
+
+---
 
 ## **Vidéo Démo**
 Une démonstration vidéo est disponible ici : 
 
-
   https://github.com/user-attachments/assets/a902d6c0-65bf-49fd-a15d-2c76fdce0903
 
-   Une démonstration de l'Admin:
-   
-   https://github.com/user-attachments/assets/570444d6-b3fc-41e2-abfc-c9166b43c09d
+  Une démonstration de l'Admin:
+  
+  https://github.com/user-attachments/assets/570444d6-b3fc-41e2-abfc-c9166b43c09d
 
 ---
 
